@@ -14,7 +14,7 @@ Provides a list of Ski/Snowboard runs and allows the user to filter them based o
 
 ## Git Work Process
 There is a specific work process we follow when making changes to code. This process helps ensure that changes are made in a specific way and are tracked to allow for build and deploy to be seamless, the following is a summary of the work process
-1. ~~Find/Create a work item related to the work you are about to start~~ since we are not tracking work items skip this
+1. Since we are not tracking work items skip this ~~Find/Create a work item related to the work you are about to start~~ 
 2. Create a new feature branch referencing the work item using all lowercase and a hyphen instead of spaces for the branch name
 3. Clone the branch locally
 4. Perform changes
