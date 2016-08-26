@@ -1,0 +1,25 @@
+﻿html {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+body
+{
+    position:relative;
+    margin:0;
+}
+header, footer
+{
+    padding: 1em;
+    color: white;
+    background-color:slategray;
+    clear: left;
+    text-align: center;
+}
+section{
+    padding: 1em;
+}
+
+fieldset{
+    border:none;
+}
