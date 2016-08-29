@@ -1,4 +1,8 @@
-﻿html {
+﻿* {
+    box-sizing: border-box;
+}
+
+html {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }
@@ -8,6 +12,7 @@ body
     position:relative;
     margin:0;
 }
+
 header, footer
 {
     padding: 1em;
@@ -16,10 +21,68 @@ header, footer
     clear: left;
     text-align: center;
 }
+
+footer{
+    position:fixed;
+    width: 100%;
+    bottom:0;
+
+}
+
 section{
     padding: 1em;
 }
 
 fieldset{
     border:none;
+}
+
+#filter {
+    width: 25%;
+    float: left;
+}
+#results {
+    width: 75%;
+    float: left;
+}
+
+.result{
+    margin-top:15px;
+}
+
+.result:first-child{
+    margin-top:0;
+}
+
+.result, .result-body{
+    zoom:1;
+    overflow: hidden;
+}
+
+.result-body {
+  width: 10000px;
+}
+
+.result-obj{
+    display: block;
+}
+
+.result-obj.img-thumbnail{
+    max-width:none;
+}
+
+
+.result-left, .result > .pull-right{
+    padding-left: 10px;
+}
+
+.result-left, .result-body {
+  display: table-cell;
+  vertical-align: top;
+}
+
+
+.result-heading {
+  margin-top: 0;
+  margin-bottom: 5px;
 }
