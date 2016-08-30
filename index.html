@@ -3,8 +3,8 @@
 	<head>
 		<title>Line Finder</title>
 		<link rel="stylesheet" href="./css/style.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
 	</head>
 <body>
 	<header>
@@ -23,274 +23,278 @@
 			<form>
 				<fieldset>
 					<label for="difficulty">Run Difficulty:</label>
-                    <div>
-					    <label>
-						    <input type="checkbox" name="difficulty[]" value="green" />Green
-					    </label>
-					    <label>
-						    <input type="checkbox" name="difficulty[]" value="blue" />Blue
-					    </label>
-					    <label>
-						    <input type="checkbox" name="difficulty[]" value="black" />Black
-					    </label>
-					    <label>
-						    <input type="checkbox" name="difficulty[]" value="doubleBlack"/>Double Black
-					    </label>
-					    <label>
-						    <input type="checkbox" name="difficulty[]" value="terrainPark" />Terrain Park
-					    </label>
-                    </div>
+					<div id="diffSelector">
+						<label>
+							<input type="checkbox" name="difficulty[]" value="green" />Green
+						</label>
+						<label>
+							<input type="checkbox" name="difficulty[]" value="blue" />Blue
+						</label>
+						<label>
+							<input type="checkbox" name="difficulty[]" value="black" />Black
+						</label>
+						<label>
+							<input type="checkbox" name="difficulty[]" value="doubleBlack" />Double Black
+						</label>
+						<label>
+							<input type="checkbox" name="difficulty[]" value="terrainPark" />Terrain Park
+						</label>
+					</div>
 				</fieldset>
-                <fieldset>
-                    <div>
-                        <label for="resort">Select Resorts:</label>
-                        <div>
-                            <select multiple name="resort" id="resort">
-                                <option>Crystal Mountain</option>
-                                <option>Snoqualmie Pass</option>
-                                <option>Stevens Pass</option>
-                                <option>Mt. Baker</option>
-                            </select>
-                        </div>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <label for="surface">Surface Conditions:</label>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="surface[]">Groomed
-                        </label>
-                        <label>
-                            <input type="checkbox" name="surface[]">Moguls
-                        </label>
-                        <label>
-                            <input type="checkbox" name="surface[]">Powder
-                        </label>
-                        <label>
-                            <input type="checkbox" name="surface[]">Icy
-                        </label>
-                    </div>
-                </fieldset>
+				<fieldset>
+					<div>
+						<label for="resort">Select Resorts:</label>
+						<div>
+							<select multiple name="resort" id="resort">
+								<option>Crystal Mountain</option>
+								<option>Snoqualmie Pass</option>
+								<option>Stevens Pass</option>
+								<option>Mt. Baker</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<label for="surface">Surface Conditions:</label>
+					<div>
+						<label>
+							<input type="checkbox" name="surface[]">Groomed
+						</label>
+						<label>
+							<input type="checkbox" name="surface[]">Moguls
+						</label>
+						<label>
+							<input type="checkbox" name="surface[]">Powder
+						</label>
+						<label>
+							<input type="checkbox" name="surface[]">Icy
+						</label>
+					</div>
+				</fieldset>
+				<input  type="submit" value="Clear Filter" />
+				<input  type="button" value="Apply Filter" />
 			</form>
 		</nav>
-        <section id="results">
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+		<section id="results">
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					The sprawling expanse of the ski terrain flows over half a dozen peaks and basins and lends itself to seemingly limitless variations. 
+					Experience breathtaking views of Mt. Rainier and the Cascade range from the top of the Mt. Rainier Gondola and Summit House restaurant; 
+					a place you can enjoy fresh Northwest cuisine and relax and reflect in the majesty of the towering peaks and sweeping views.
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-            <div class="result">
-                <div class="result-left">
-                    <a href="#">
-                        <img class="result-obj" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="result-body">
-                    <h4 class="result-heading">Some Run 1</h4>
-                    This is some information about run 1
+				</div>
+			</div>
+			<div class="result">
+				<div class="result-left">
+					<a href="#">
+						<img class="result-obj" src="..." alt="...">
+					</a>
+				</div>
+				<div class="result-body">
+					<h4 class="result-heading">Some Run 1</h4>
+					This is some information about run 1
 
-                </div>
-            </div>
-        </section>
+				</div>
+			</div>
+		</section>
 	</main>
 	<footer>
 		<div>Justin Dietz</div>

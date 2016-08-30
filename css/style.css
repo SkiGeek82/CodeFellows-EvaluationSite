@@ -2,19 +2,17 @@
     box-sizing: border-box;
 }
 
-html {
+html{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }
 
-body
-{
+body{
     position:relative;
     margin:0;
 }
 
-header, footer
-{
+header, footer{
     padding: 1em;
     color: white;
     background-color:slategray;
@@ -30,7 +28,7 @@ footer{
 }
 
 section{
-    padding: 1em;
+    
 }
 
 fieldset{
@@ -40,11 +38,15 @@ fieldset{
 #filter {
     width: 25%;
     float: left;
+    padding: 1em;
 }
 #results {
     width: 75%;
     float: left;
+    padding: 1em;
 }
+
+/* Result Card modelded after the bs Media component*/
 
 .result{
     margin-top:15px;
@@ -85,4 +87,20 @@ fieldset{
 .result-heading {
   margin-top: 0;
   margin-bottom: 5px;
+}
+
+/* End Result Card Styles*/
+
+#diffSelector label > input[type=checkbox] {
+    display:none;
+}
+ 
+
+#diffSelector label > input[type=checkbox]:checked
+{
+    background: #0080FF;
+    height: 16px;
+    width: 16px;
+    display:inline-block;
+    padding: 0 0 0 0px;
 }
