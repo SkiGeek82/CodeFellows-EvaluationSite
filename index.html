@@ -4,7 +4,8 @@
 		<title>Line Finder</title>
 		<link rel="stylesheet" href="./css/style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
+		<script type="text/javascript" src="./scripts/template-results.js"></script>
+		<script type="text/javascript" src="./scripts/app.js"></script>
 	</head>
 <body>
 	<header>
@@ -71,12 +72,12 @@
 						</label>
 					</div>
 				</fieldset>
-				<input  type="submit" value="Clear Filter" />
-				<input  type="button" value="Apply Filter" />
+				<input id="clearfilter" type="button" value="Clear Filter" />
+				<input id="applyfilter" type="button" value="Apply Filter" />
 			</form>
 		</nav>
 		<section id="results">
-			<div class="result">
+			<!--<div class="result">
 				<div class="result-left">
 					<a href="#">
 						<img class="result-obj" src="..." alt="...">
@@ -89,211 +90,9 @@
 					a place you can enjoy fresh Northwest cuisine and relax and reflect in the majesty of the towering peaks and sweeping views.
 
 				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
-			<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					This is some information about run 1
-
-				</div>
-			</div>
+			</div>-->
+			
+			
 		</section>
 	</main>
 	<footer>
