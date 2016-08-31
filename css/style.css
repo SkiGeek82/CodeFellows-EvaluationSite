@@ -67,6 +67,7 @@ fieldset{
 
 .result-obj{
     display: block;
+    width: 100px;
 }
 
 .result-obj.img-thumbnail{
@@ -74,8 +75,8 @@ fieldset{
 }
 
 
-.result-left, .result > .pull-right{
-    padding-left: 10px;
+.result-left{
+    padding-right: 10px;
 }
 
 .result-left, .result-body {
