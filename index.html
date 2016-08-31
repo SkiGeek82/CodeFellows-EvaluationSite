@@ -19,8 +19,8 @@
 		</ul>
 	</nav>-->
 	<main>
-		<nav id="filter">
-			<form>
+		<nav id="filternav">
+			<form name="filter">
 				<fieldset>
 					<label for="difficulty">Run Difficulty:</label>
 					<div id="diffSelector">
@@ -58,16 +58,16 @@
 					<label for="surface">Surface Conditions:</label>
 					<div>
 						<label>
-							<input type="checkbox" name="surface[]" />Groomed
+							<input type="checkbox" name="surface[]" value="groomed" />Groomed
 						</label>
 						<label>
-							<input type="checkbox" name="surface[]" />Moguls
+							<input type="checkbox" name="surface[]" value="moguls"/>Moguls
 						</label>
 						<label>
-							<input type="checkbox" name="surface[]" />Powder
+							<input type="checkbox" name="surface[]" value="powder"/>Powder
 						</label>
 						<label>
-							<input type="checkbox" name="surface[]" />Icy
+							<input type="checkbox" name="surface[]" value="icy"/>Icy
 						</label>
 					</div>
 				</fieldset>
