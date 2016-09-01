@@ -1,64 +1,51 @@
 'use strict';
 
-var rundata = {
-    "runs": [
-        {
-            "id": 1,
-            "resort":"Crystal Mountain",
-            "name": "Lucky Shot",
-            "description": "The easiest way down from the top of the Gondola or Raineir express offers a mixture of steep slopes seperated by mild runouts. With plenty of cat tracks to bypass the steeper slopes this is defnitely your easiest way down",
-            "difficulty": "blue",
-            "surface": "groomed",
-            "image": "./images/runs/luckyshot.jpg"
-        },
-        {
-            "id": 2,
-            "resort": "Crystal Mountain",
-            "name": "Snorting Elk",
-            "description": "Offering a number of routes from a steep groomed slope to powder. This run varies on the day but is worth checking out.",
-            "difficulty": "black",
-            "surface": "moguls",
-            "image": "./images/runs/luckyshot.jpg"
-        },
-        {
-            "id": 3,
-            "resort": "Crystal Mountain",
-            "name": "Brain Damage",
-            "description": "A hike from the throne saddle around the back and up to the top of Silver King leads you to find a number of entrances into A basin the main entrance from the peak is Brain Damage.",
-            "difficulty": "doubleBlack",
-            "surface": "powder",
-            "image": "./images/runs/luckyshot.jpg"
-        },
-        {
-            "id": 4,
-            "resort": "Stevens Pass",
-            "name": "Wild Catz",
-            "description": "A hike from the throne saddle around the back and up to the top of Silver King leads you to find a number of entrances into A basin the main entrance from the peak is Brain Damage.",
-            "difficulty": "doubleBlack",
-            "surface": "powder",
-            "image": "./images/runs/luckyshot.jpg"
-        }
-    ]
-};
+var LINEFINDER = LINEFINDER || {};
 
-//class filter {
-//    constructor() {
-//        this.difficulty = [];
-//        this.surface = [];
-//        this.text = "";
-//    }
+LINEFINDER.event = LINEFINDER.event || {};
+
+LINEFINDER.event = {
+    // Parameters:
+    // el - element object to add listner to
+    // type - the event type as a string to add ie: "click"
+    // fn - the function reference to call when event is raised
+    addListner: function (el, type, fn) {
+        el.addEventListener(type, fn);
+    },
+
+    removeListner: function (el, type, fn) {
+        el.removeEventListener(type, fn);
+    }
+}
+
+LINEFINDER.result = {};
+LINEFINDER.result = {
     
-//}
-
-// We probably don't need a default filter we will just clear the current filter
-// var defaultFilter = { "difficulty": ["green", "blue", "black", "doubleblack"] }
+}
 
 var btnFilter = document.getElementById("applyfilter");
-btnFilter.addEventListener("click", filterData);
+
+//Using this element could potentially call the filterData function when 
+//user doesnt click the checkbox label. I could add an event listner for 
+//each label if it is an issue
+var diffSelector = document.getElementById("diffSelector");
+var resortSelector = document.getElementById("resort");
+var filterText = document.getElementById("filterText")
+
+
+
+LINEFINDER.event.addListner(btnFilter, "click", filterData);
+LINEFINDER.event.addListner(diffSelector, "click", filterData);
+LINEFINDER.event.addListner(resortSelector, "click", filterData);
+//this will run if someone just clicks in the text field and press any key even if it doesnt result in data entry
+LINEFINDER.event.addListner(filterText, "keyup", filterData);
+
 
 window.onload = function () {
     formatResults(rundata.runs, "results");
 }
+
+
 
 
 
