@@ -21,31 +21,36 @@
 	<main>
 		<nav id="filternav">
 			<form name="filter">
-				<fieldset>
-					<label for="difficulty">Run Difficulty:</label>
-					<div id="diffSelector">
-						<label>
-							<input type="checkbox" name="difficulty[]" value="green" />Green
-						</label>
-						<label>
-							<input type="checkbox" name="difficulty[]" value="blue" />Blue
-						</label>
-						<label>
-							<input type="checkbox" name="difficulty[]" value="black" />Black
-						</label>
-						<label>
-							<input type="checkbox" name="difficulty[]" value="doubleBlack" />Double Black
-						</label>
-						<label>
-							<input type="checkbox" name="difficulty[]" value="terrainPark" />Terrain Park
-						</label>
-					</div>
-				</fieldset>
+                <fieldset>
+                    <label for="difficulty">Run Difficulty:</label>
+                    <div id="diffSelector" class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="difficulty[]" value="green" />
+                            <img src="./images/green_circle.svg" alt="Green Cirle" />
+                        </label>
+                        <label>
+                            <input type="checkbox" name="difficulty[]" value="blue" />
+                            <img src="./images/blue_square.svg" alt="Blue Square"  />
+                        </label>
+                        <label>
+                            <input type="checkbox" name="difficulty[]" value="black" />
+                            <img src="./images/black_diamond.svg" alt="Black Diamond"  />
+                        </label>
+                        <label>
+                            <input type="checkbox" name="difficulty[]" value="doubleBlack" />
+                            <img src="./images/double_black_diamond.svg" alt="Double Black Diamond"  />
+                        </label>
+                        <label>
+                            <input type="checkbox" name="difficulty[]" value="terrainPark" />
+                            <img src="./images/terrain_park.svg" alt="Terrain Park"  />
+                        </label>
+                    </div>
+                </fieldset>
 				<fieldset>
 					<div>
 						<label for="resort">Select Resorts:</label>
 						<div>
-							<select multiple name="resort" id="resort">
+							<select multiple name="resort" id="resort" class="form-control" style="height:auto;">
 								<option>Crystal Mountain</option>
 								<option>Snoqualmie Pass</option>
 								<option>Stevens Pass</option>
@@ -54,31 +59,41 @@
 						</div>
 					</div>
 				</fieldset>
-				<fieldset>
-					<label for="surface">Surface Conditions:</label>
-					<div>
-						<label>
-							<input type="checkbox" name="surface[]" value="groomed" />Groomed
-						</label>
-						<label>
-							<input type="checkbox" name="surface[]" value="moguls"/>Moguls
-						</label>
-						<label>
-							<input type="checkbox" name="surface[]" value="powder"/>Powder
-						</label>
-						<label>
-							<input type="checkbox" name="surface[]" value="icy"/>Icy
-						</label>
-					</div>
-				</fieldset>
+                <fieldset>
+                    <label for="surface">Surface Conditions:</label>
+                    <div class="checkbox-group">
+                        <div>
+                            <label>
+                                <input type="checkbox" name="surface[]" value="groomed" />Groomed
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" name="surface[]" value="moguls" />Moguls
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" name="surface[]" value="powder" />Powder
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" name="surface[]" value="icy" />Icy
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
                 <fieldset>
                     <label for="filterText">Filter Text:</label>
                     <div>
-                       <input id="filterText" type="text" name="filterText" />
+                       <input id="filterText" class="form-control" type="text" name="filterText" placeholder="Filter Text" />
                     </div>
                 </fieldset>
-				<input id="clearfilter" type="button" value="Clear Filter" />
-				<input id="applyfilter" type="button" value="Apply Filter" />
+                <div style="text-align:right">
+                    <input class="btn btn-default" id="resetfilter" type="button" value="Reset Filter" />
+                    <input class="btn btn-primary" id="applyfilter" type="button" value="Apply Filter" />
+                </div>
 			</form>
 		</nav>
 		<section id="results">
