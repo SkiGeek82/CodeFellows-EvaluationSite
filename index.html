@@ -10,78 +10,88 @@
 	<header>
 		<h1>Line Finder</h1>
 	</header>
-	<!-- No Nav yet Maybe later
-	<nav>
-		<ul>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
-	</nav>-->
-	<main>
-		<nav id="filternav">
-			<form name="filter">
-				<fieldset>
-					<label for="difficulty">Run Difficulty:</label>
-					<div id="diffSelector">
-						<label>
-							<input type="checkbox" name="difficulty[]" value="green" />Green
-						</label>
-						<label>
-							<input type="checkbox" name="difficulty[]" value="blue" />Blue
-						</label>
-						<label>
-							<input type="checkbox" name="difficulty[]" value="black" />Black
-						</label>
-						<label>
-							<input type="checkbox" name="difficulty[]" value="doubleBlack" />Double Black
-						</label>
-						<label>
-							<input type="checkbox" name="difficulty[]" value="terrainPark" />Terrain Park
-						</label>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div>
-						<label for="resort">Select Resorts:</label>
-						<div>
-							<select multiple name="resort" id="resort">
-								<option>Crystal Mountain</option>
-								<option>Snoqualmie Pass</option>
-								<option>Stevens Pass</option>
-								<option>Mt. Baker</option>
-							</select>
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<label for="surface">Surface Conditions:</label>
-					<div>
-						<label>
-							<input type="checkbox" name="surface[]" value="groomed" />Groomed
-						</label>
-						<label>
-							<input type="checkbox" name="surface[]" value="moguls"/>Moguls
-						</label>
-						<label>
-							<input type="checkbox" name="surface[]" value="powder"/>Powder
-						</label>
-						<label>
-							<input type="checkbox" name="surface[]" value="icy"/>Icy
-						</label>
-					</div>
-				</fieldset>
-                <fieldset>
-                    <label for="filterText">Filter Text:</label>
+    <!-- On Mobile make it so that this filter colapses -->
+    <nav id="filternav">
+        <form name="filter">
+            <fieldset>
+                <label for="difficulty">Run Difficulty:</label>
+                <div id="diffSelector" class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="difficulty[]" value="green" />
+                        <img src="./images/green.svg" alt="Green Cirle" />
+                    </label>
+                    <label>
+                        <input type="checkbox" name="difficulty[]" value="blue" />
+                        <img src="./images/blue.svg" alt="Blue Square" />
+                    </label>
+                    <label>
+                        <input type="checkbox" name="difficulty[]" value="black" />
+                        <img src="./images/black.svg" alt="Black Diamond" />
+                    </label>
+                    <label>
+                        <input type="checkbox" name="difficulty[]" value="doubleBlack" />
+                        <img src="./images/doubleBlack.svg" alt="Double Black Diamond" />
+                    </label>
+                    <label>
+                        <input type="checkbox" name="difficulty[]" value="terrainPark" />
+                        <img src="./images/terrainPark.svg" alt="Terrain Park" />
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div>
+                    <label for="resort">Select Resorts:</label>
                     <div>
-                       <input id="filterText" type="text" name="filterText" />
+                        <select multiple name="resort" id="resort" class="form-control" style="height:auto;">
+                            <option>Crystal Mountain</option>
+                            <option>Snoqualmie Pass</option>
+                            <option>Stevens Pass</option>
+                            <option>Mt. Baker</option>
+                        </select>
                     </div>
-                </fieldset>
-				<input id="clearfilter" type="button" value="Clear Filter" />
-				<input id="applyfilter" type="button" value="Apply Filter" />
-			</form>
-		</nav>
+                </div>
+            </fieldset>
+            <fieldset>
+                <label for="surface">Surface Conditions:</label>
+                <div class="checkbox-group">
+                    <div>
+                        <label>
+                            <input type="checkbox" name="surface[]" value="groomed" />Groomed
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="surface[]" value="moguls" />Moguls
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="surface[]" value="powder" />Powder
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" name="surface[]" value="icy" />Icy
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <label for="filterText">Filter Text:</label>
+                <div>
+                    <input id="filterText" class="form-control" type="text" name="filterText" placeholder="Filter Text" />
+                </div>
+            </fieldset>
+            <div style="text-align:right">
+                <input class="btn btn-default" id="resetfilter" type="button" value="Reset Filter" />
+                <input class="btn btn-primary" id="applyfilter" type="button" value="Apply Filter" />
+            </div>
+        </form>
+    </nav>
+	<main>
+		
 		<section id="results">
+            <!--This was replaced by a javascript template-->
 			<!--<div class="result">
 				<div class="result-left">
 					<a href="#">
@@ -95,9 +105,7 @@
 					a place you can enjoy fresh Northwest cuisine and relax and reflect in the majesty of the towering peaks and sweeping views.
 
 				</div>
-			</div>-->
-			
-			
+			</div>-->		
 		</section>
 	</main>
 	<footer>
