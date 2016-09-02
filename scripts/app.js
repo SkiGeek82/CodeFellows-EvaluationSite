@@ -20,7 +20,7 @@ LINEFINDER.event = {
         el.addEventListener(type, fn);
     },
 
-    removeListner: function (el, type, fn) {
+    removeListner: function (el, type, fn) {        
         el.removeEventListener(type, fn);
     }
 };
@@ -45,12 +45,12 @@ LINEFINDER.event.addListner(filterText, "keyup", filterData);
 
 window.onload = function () {
    // formatResults(rundata.runs, "results");
-    Filters.load();
+    LINEFINDER.Filters.load();
     filterData();
 }
 
 //using object literals because there is not a need for more than one instance of the filter object
-var Filters = {
+LINEFINDER.Filters = {
     difficulty: [],
     resort: [],
     surface: [],
@@ -65,11 +65,11 @@ var Filters = {
     },
     save: function () {
         //implement localstorage saving
-        localStorage.setItem("Filters", JSON.stringify(this));
+        localStorage.setItem(LINEFINDER.commonMethod.FilterLocalStorage, JSON.stringify(this));
     },
     load: function () {
         //implement localstorage retrieval
-        var tmpFilters = JSON.parse(localStorage.getItem("Filters"));
+        var tmpFilters = JSON.parse(localStorage.getItem(LINEFINDER.commonMethod.FilterLocalStorage));
         this.difficulty = tmpFilters != null ? tmpFilters.difficulty : [];
         this.resort = tmpFilters != null ? tmpFilters.resort : [];
         this.surface = tmpFilters != null ? tmpFilters.surface : [];
@@ -79,7 +79,7 @@ var Filters = {
     },
     reset: function () {
         //delete from local storage
-        localStorage.removeItem("Filters");
+        localStorage.removeItem(LINEFINDER.commonMethod.FilterLocalStorage);
         //delete in memory
         this.loadFilters();
     },
@@ -110,16 +110,16 @@ var Filters = {
 
 
 function filterData() {
-    Filters.getFilters();
+    LINEFINDER.Filters.getFilters();
     //apears that passing an object to the filter function does not evaluate correctly
     //will do some more research but for now going to apply consecutive filters.
     //formatResults(rundata.runs.filter(filterByAll(filterData)), "results");
 
     var filteredRuns = rundata.runs
-        .filter(filterByDifficulty(Filters.difficulty))
-        .filter(filterByText(Filters.filterText))
-        .filter(filterBySurface(Filters.surface))
-        .filter(filterByResort(Filters.resort));
+        .filter(filterByDifficulty(LINEFINDER.Filters.difficulty))
+        .filter(filterByText(LINEFINDER.Filters.filterText))
+        .filter(filterBySurface(LINEFINDER.Filters.surface))
+        .filter(filterByResort(LINEFINDER.Filters.resort));
     formatResults(filteredRuns, "results");
 }
 
