@@ -70,12 +70,20 @@ LINEFINDER.Filters = {
     load: function () {
         //implement localstorage retrieval
         var tmpFilters = JSON.parse(localStorage.getItem(LINEFINDER.commonMethod.FilterLocalStorage));
-        tmpFilters = tmpFilters != null ? tmpFilters : {};
-        //rather than a Ternary opperator if statement with two sections of assignmen
-        this.difficulty =tmpFilters.difficulty;
-        this.resort = tmpFilters.resort;
-        this.surface = tmpFilters.surface;
-        this.filterText = tmpFilters.filterText != null ? tmpFilters.filterText : "";
+
+        if (tmpFilters == null) {
+            this.difficulty = [];
+            this.resort = [];
+            this.surface = [];
+            this.filterText = "";
+        }
+        else {
+            this.difficulty = tmpFilters.difficulty;
+            this.resort = tmpFilters.resort;
+            this.surface = tmpFilters.surface;
+            this.filterText = tmpFilters.filterText;
+        }
+
         //Update UI
         this.updateControls();
     },
