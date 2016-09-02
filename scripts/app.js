@@ -70,10 +70,12 @@ LINEFINDER.Filters = {
     load: function () {
         //implement localstorage retrieval
         var tmpFilters = JSON.parse(localStorage.getItem(LINEFINDER.commonMethod.FilterLocalStorage));
-        this.difficulty = tmpFilters != null ? tmpFilters.difficulty : [];
-        this.resort = tmpFilters != null ? tmpFilters.resort : [];
-        this.surface = tmpFilters != null ? tmpFilters.surface : [];
-        this.filterText = tmpFilters != null ? tmpFilters.filterText : "";
+        tmpFilters = tmpFilters != null ? tmpFilters : {};
+        //rather than a Ternary opperator if statement with two sections of assignmen
+        this.difficulty =tmpFilters.difficulty;
+        this.resort = tmpFilters.resort;
+        this.surface = tmpFilters.surface;
+        this.filterText = tmpFilters.filterText != null ? tmpFilters.filterText : "";
         //Update UI
         this.updateControls();
     },
@@ -81,7 +83,7 @@ LINEFINDER.Filters = {
         //delete from local storage
         localStorage.removeItem(LINEFINDER.commonMethod.FilterLocalStorage);
         //delete in memory
-        this.loadFilters();
+        this.load();
     },
 
     //need to convert from literal so I can make these private/privlaged
