@@ -1,6 +1,13 @@
 'use strict';
+//Sticking to ECMAScript 5 based on feedback from CodeFellows Admin
 
+//Creating "Namespace" 
 var LINEFINDER = LINEFINDER || {};
+
+
+LINEFINDER.commonMethod = {
+    FilterLocalStorage: "Filters"
+}
 
 LINEFINDER.event = LINEFINDER.event || {};
 
@@ -16,12 +23,7 @@ LINEFINDER.event = {
     removeListner: function (el, type, fn) {
         el.removeEventListener(type, fn);
     }
-}
-
-LINEFINDER.result = {};
-LINEFINDER.result = {
-    
-}
+};
 
 var btnFilter = document.getElementById("applyfilter");
 
@@ -42,46 +44,86 @@ LINEFINDER.event.addListner(filterText, "keyup", filterData);
 
 
 window.onload = function () {
-    formatResults(rundata.runs, "results");
+   // formatResults(rundata.runs, "results");
+    Filters.load();
+    filterData();
+}
+
+//using object literals because there is not a need for more than one instance of the filter object
+var Filters = {
+    difficulty: [],
+    resort: [],
+    surface: [],
+    filterText: "",
+    getFilters: function () {
+        this.difficulty = this.getDifficulty();
+        this.surface = this.getSurface();
+        this.resort = this.getResort();
+        this.filterText = this.getFilterText();
+        this.save();
+        return this
+    },
+    save: function () {
+        //implement localstorage saving
+        localStorage.setItem("Filters", JSON.stringify(this));
+    },
+    load: function () {
+        //implement localstorage retrieval
+        var tmpFilters = JSON.parse(localStorage.getItem("Filters"));
+        this.difficulty = tmpFilters != null ? tmpFilters.difficulty : [];
+        this.resort = tmpFilters != null ? tmpFilters.resort : [];
+        this.surface = tmpFilters != null ? tmpFilters.surface : [];
+        this.filterText = tmpFilters != null ? tmpFilters.filterText : "";
+        //Update UI
+        this.updateControls();
+    },
+    reset: function () {
+        //delete from local storage
+        localStorage.removeItem("Filters");
+        //delete in memory
+        this.loadFilters();
+    },
+
+    //need to convert from literal so I can make these private/privlaged
+    getDifficulty: function () {
+        return getCheckedBoxesValues("difficulty[]");
+    },
+    getSurface: function () {
+        return getCheckedBoxesValues("surface[]");
+    },
+    getResort: function () {
+        return getSelectedOptions("resort");
+    },
+    getFilterText: function () {
+        return document.getElementById("filterText").value.toLowerCase();
+    },
+
+
+    updateControls: function () {
+        document.getElementById("filterText").value = this.filterText;
+
+    }
+
 }
 
 
 
 
-
-function filterData(filters) {
-    var filterData = getFilterData();
+function filterData() {
+    Filters.getFilters();
     //apears that passing an object to the filter function does not evaluate correctly
     //will do some more research but for now going to apply consecutive filters.
     //formatResults(rundata.runs.filter(filterByAll(filterData)), "results");
 
     var filteredRuns = rundata.runs
-        .filter(filterByDifficulty(filterData.difficutly))
-        .filter(filterByText(filterData.text))
-        .filter(filterBySurface(filterData.surface))
-        .filter(filterByResort(filterData.resort));
+        .filter(filterByDifficulty(Filters.difficulty))
+        .filter(filterByText(Filters.filterText))
+        .filter(filterBySurface(Filters.surface))
+        .filter(filterByResort(Filters.resort));
     formatResults(filteredRuns, "results");
 }
 
-function getFilterData() {
-    var filterData = {}
-    filterData.difficutly = getCheckedBoxesValues("difficulty[]");
-    filterData.surface = getCheckedBoxesValues("surface[]");
-    filterData.resort = getSelectedOptions("resort");
-    filterData.text = document.getElementById("filterText").value.toLowerCase();
-    return filterData;
-
-}
-
-
-//See if I can combine filters it's not working
-function filterByAll(filterObj) {
-    return function (element) {
-        return filterObj.difficulty.includes(element.difficulty) &&
-            (element.name.toLowerCase().includes(filterObj.text) || element.description.toLowerCase().includes(filterObj.text));
-    }
-}
-
+// Need to move filters into runs model object
 //Filters Runs by difficulty given an array of selected difficulties
 function filterByDifficulty(value) {
     return function (element) {
@@ -111,7 +153,7 @@ function filterByResort(value) {
 }
 
 
-
+// In the MDN guide these would move to the CommonMethod section
 // Return array of the checked checkbox values
 function getCheckedBoxesValues(objName) {
     var checkBoxes = document.getElementsByName(objName);
