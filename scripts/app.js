@@ -20,34 +20,26 @@ LINEFINDER.event = {
         el.addEventListener(type, fn);
     },
 
+    //add the same event listner to an array of elments
+    addListners: function(el, type, fn){
+        for(var i=0; i<el.length;i++)
+        {
+            el[i].addEventListener(type, fn);
+        }
+    },
+
     removeListner: function (el, type, fn) {        
         el.removeEventListener(type, fn);
+    },
+
+    removeListners: function(el,type, fn){
+        for (i = 0; i < x.length; i++) {
+            el[i].removeEventListener(type, fn);
+        }
     }
 };
 
-var btnFilter = document.getElementById("applyfilter");
 
-//Using this element could potentially call the filterData function when 
-//user doesnt click the checkbox label. I could add an event listner for 
-//each label if it is an issue
-var diffSelector = document.getElementById("diffSelector");
-var resortSelector = document.getElementById("resort");
-var filterText = document.getElementById("filterText")
-
-
-
-LINEFINDER.event.addListner(btnFilter, "click", filterData);
-LINEFINDER.event.addListner(diffSelector, "click", filterData);
-LINEFINDER.event.addListner(resortSelector, "click", filterData);
-//this will run if someone just clicks in the text field and press any key even if it doesnt result in data entry
-LINEFINDER.event.addListner(filterText, "keyup", filterData);
-
-
-window.onload = function () {
-   // formatResults(rundata.runs, "results");
-    LINEFINDER.Filters.load();
-    filterData();
-}
 
 //using object literals because there is not a need for more than one instance of the filter object
 LINEFINDER.Filters = {
@@ -92,6 +84,7 @@ LINEFINDER.Filters = {
         localStorage.removeItem(LINEFINDER.commonMethod.FilterLocalStorage);
         //delete in memory
         this.load();
+
     },
 
     //need to convert from literal so I can make these private/privlaged
@@ -105,11 +98,12 @@ LINEFINDER.Filters = {
         return getSelectedOptions("resort");
     },
     getFilterText: function () {
-        return document.getElementById("filterText").value.toLowerCase();
+        return document.getElementById("filterText").value;
     },
-
-
     updateControls: function () {
+        setCheckBoxes("difficulty[]", this.difficulty);
+        setCheckBoxes("surface[]", this.surface);
+        setSelectedOptions("resort", this.resort);
         document.getElementById("filterText").value = this.filterText;
 
     }
@@ -117,7 +111,35 @@ LINEFINDER.Filters = {
 }
 
 
+var btnResetFilter = document.getElementById("resetfilter");
 
+
+var difficultyLabels = document.getElementById("diffSelector").getElementsByTagName("label");
+var surfaceLabels = document.getElementById("surfaceGroup").getElementsByTagName("label");
+var resortSelector = document.getElementById("resort");
+var filterText = document.getElementById("filterText")
+
+
+
+LINEFINDER.event.addListner(btnResetFilter, "click", resetFilters);
+LINEFINDER.event.addListners(difficultyLabels, "click", filterData);
+LINEFINDER.event.addListners(surfaceLabels, "click", filterData);
+LINEFINDER.event.addListner(resortSelector, "click", filterData);
+//this will run if someone just clicks in the text field and press any key even if it doesnt result in data entry
+LINEFINDER.event.addListner(filterText, "keyup", filterData);
+
+
+window.onload = function () {
+    // formatResults(rundata.runs, "results");
+    LINEFINDER.Filters.load();
+    filterData();
+}
+
+function resetFilters() {
+    LINEFINDER.Filters.reset();
+    filterData();
+
+}
 
 function filterData() {
     LINEFINDER.Filters.getFilters();
@@ -127,7 +149,7 @@ function filterData() {
 
     var filteredRuns = rundata.runs
         .filter(filterByDifficulty(LINEFINDER.Filters.difficulty))
-        .filter(filterByText(LINEFINDER.Filters.filterText))
+        .filter(filterByText(LINEFINDER.Filters.filterText.toLowerCase()))
         .filter(filterBySurface(LINEFINDER.Filters.surface))
         .filter(filterByResort(LINEFINDER.Filters.resort));
     formatResults(filteredRuns, "results");
@@ -176,6 +198,13 @@ function getCheckedBoxesValues(objName) {
     return checkedCheckBoxes;
 }
 
+function setCheckBoxes(objName, objValues) {
+    var checkBoxes = document.getElementsByName(objName);
+    for (var i = 0; i < checkBoxes.length; i++) {
+        checkBoxes[i].checked = objValues.includes(checkBoxes[i].value)
+    }
+}
+
 // Return array of the checked checkbox values
 function getSelectedOptions(objId) {
     var selectElement = document.getElementById(objId);
@@ -186,4 +215,14 @@ function getSelectedOptions(objId) {
         }
     }
     return selectedOptions;
+}
+
+function setSelectedOptions(objId, objValues) {
+    var selectElement = document.getElementById(objId);
+
+    for (var i = 0; i < selectElement.length; i++) {
+        selectElement[i].selected = objValues.includes(selectElement[i].value.toLowerCase())
+    }
+    
+
 }
