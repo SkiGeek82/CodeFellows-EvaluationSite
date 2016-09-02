@@ -6,47 +6,6 @@ var LINEFINDER = LINEFINDER || {};
 LINEFINDER.models = LINEFINDER.models || {};
 LINEFINDER.views = LINEFINDER.views || {};
 LINEFINDER.helpers = LINEFINDER.helpers || {};
-
-LINEFINDER.helpers.getCheckedBoxesValues = function (objName) {
-    var checkBoxes = document.getElementsByName(objName);
-    var checkedCheckBoxes = [];
-    for (var i = 0; i < checkBoxes.length; i++) {
-        if (checkBoxes[i].checked) {
-            checkedCheckBoxes.push(checkBoxes[i].value);
-        }
-    }
-    return checkedCheckBoxes;
-};
-
-LINEFINDER.helpers.setCheckBoxes = function (objName, objValues) {
-    var checkBoxes = document.getElementsByName(objName);
-    for (var i = 0; i < checkBoxes.length; i++) {
-        checkBoxes[i].checked = objValues.includes(checkBoxes[i].value)
-    }
-};
-
-LINEFINDER.helpers.getSelectedOptions = function (objId) {
-    var selectElement = document.getElementById(objId);
-    var selectedOptions = [];
-    for (var i = 0; i < selectElement.length; i++) {
-        if (selectElement[i].selected) {
-            selectedOptions.push(selectElement[i].value.toLowerCase());
-        }
-    }
-    return selectedOptions;
-};
-
-LINEFINDER.helpers.setSelectedOptions = function (objId, objValues) {
-    var selectElement = document.getElementById(objId);
-    for (var i = 0; i < selectElement.length; i++) {
-        selectElement[i].selected = objValues.includes(selectElement[i].value.toLowerCase())
-    }
-};
-
-LINEFINDER.commonMethod = {
-    FilterLocalStorage: "Filters"
-}
-
 LINEFINDER.event = LINEFINDER.event || {};
 
 LINEFINDER.event = {
@@ -59,23 +18,30 @@ LINEFINDER.event = {
     },
 
     //add the same event listner to an array of elments
-    addListners: function(el, type, fn){
-        for(var i=0; i<el.length;i++)
-        {
+    addListners: function (el, type, fn) {
+        for (var i = 0; i < el.length; i++) {
             el[i].addEventListener(type, fn);
         }
     },
 
-    removeListner: function (el, type, fn) {        
+    removeListner: function (el, type, fn) {
         el.removeEventListener(type, fn);
     },
 
-    removeListners: function(el,type, fn){
+    removeListners: function (el, type, fn) {
         for (i = 0; i < x.length; i++) {
             el[i].removeEventListener(type, fn);
         }
     }
 };
+
+
+LINEFINDER.commonMethod = {
+    FilterLocalStorage: "Filters"
+}
+
+
+
 
 
 
