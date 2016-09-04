@@ -1,100 +1,150 @@
 'use strict';
+//Sticking to ECMAScript 5 based on feedback from CodeFellows Admin
 
-var rundata = {
-    "runs": [
-        {
-            "id": 1,
-            "resort":"Crystal Mountain",
-            "name": "Lucky Shot",
-            "description": "The easiest way down from the top of the Gondola or Raineir express offers a mixture of steep slopes seperated by mild runouts. With plenty of cat tracks to bypass the steeper slopes this is defnitely your easiest way down",
-            "difficulty": "blue",
-            "surface": "groomed",
-            "image": "./images/runs/luckyshot.jpg"
-        },
-        {
-            "id": 2,
-            "resort": "Crystal Mountain",
-            "name": "Snorting Elk",
-            "description": "Offering a number of routes from a steep groomed slope to powder. This run varies on the day but is worth checking out.",
-            "difficulty": "black",
-            "surface": "moguls",
-            "image": "./images/runs/luckyshot.jpg"
-        },
-        {
-            "id": 3,
-            "resort": "Crystal Mountain",
-            "name": "Brain Damage",
-            "description": "A hike from the throne saddle around the back and up to the top of Silver King leads you to find a number of entrances into A basin the main entrance from the peak is Brain Damage.",
-            "difficulty": "doubleBlack",
-            "surface": "powder",
-            "image": "./images/runs/luckyshot.jpg"
-        },
-        {
-            "id": 4,
-            "resort": "Stevens Pass",
-            "name": "Wild Catz",
-            "description": "A hike from the throne saddle around the back and up to the top of Silver King leads you to find a number of entrances into A basin the main entrance from the peak is Brain Damage.",
-            "difficulty": "doubleBlack",
-            "surface": "powder",
-            "image": "./images/runs/luckyshot.jpg"
-        }
-    ]
+//Creating 'Namespace' 
+var LINEFINDER = LINEFINDER || {};
+//LINEFINDER.models = LINEFINDER.models || {};
+//LINEFINDER.views = LINEFINDER.views || {};
+LINEFINDER.helpers = LINEFINDER.helpers || {};
+LINEFINDER.event = LINEFINDER.event || {};
+LINEFINDER.settings = LINEFINDER.settings || {};
+
+
+LINEFINDER.settings = {
+    filterLocalStorage: 'Filters',
+    difficultyGrpId: 'diff-grp',
+    difficultyCtrlName: 'difficulty[]',
+    surfaceGrpId: 'surface-grp',
+    surfaceCtrlName: 'surface[]',
+    resortId: 'resort',
+    filterTxtId: 'filter-txt',
+    resetBtnId: 'reset-btn',
+    resultsId: 'results'
 };
 
-//class filter {
-//    constructor() {
-//        this.difficulty = [];
-//        this.surface = [];
-//        this.text = "";
-//    }
-    
-//}
 
-// We probably don't need a default filter we will just clear the current filter
-// var defaultFilter = { "difficulty": ["green", "blue", "black", "doubleblack"] }
 
-var btnFilter = document.getElementById("applyfilter");
-btnFilter.addEventListener("click", filterData);
+
+//using object literals because there is not a need for more than one instance of the filter object
+LINEFINDER.Filters = {
+    difficulty: [],
+    resort: [],
+    surface: [],
+    filterText: '',
+    getFilters: function () {
+        this.difficulty = this.getDifficulty();
+        this.surface = this.getSurface();
+        this.resort = this.getResort();
+        this.filterText = this.getFilterText();
+        this.save();
+        return this
+    },
+    save: function () {
+        //implement localstorage saving
+        localStorage.setItem(LINEFINDER.settings.filterLocalStorage, JSON.stringify(this));
+    },
+    load: function () {
+        //implement localstorage retrieval
+        var tmpFilters = JSON.parse(localStorage.getItem(LINEFINDER.settings.filterLocalStorage));
+
+        if (tmpFilters == null) {
+            this.difficulty = [];
+            this.resort = [];
+            this.surface = [];
+            this.filterText = '';
+        }
+        else {
+            this.difficulty = tmpFilters.difficulty;
+            this.resort = tmpFilters.resort;
+            this.surface = tmpFilters.surface;
+            this.filterText = tmpFilters.filterText;
+        }
+
+        //Update UI
+        //Change to Notify Controler
+        this.updateControls();
+    },
+    //Move to model
+    reset: function () {
+        //delete from local storage
+        localStorage.removeItem(LINEFINDER.settings.filterLocalStorage);
+        //delete in memory
+        this.load();
+
+    },
+
+    //Move to controller
+    getDifficulty: function () {
+        return LINEFINDER.helpers.getCheckedBoxesValues(LINEFINDER.settings.difficultyCtrlName);
+    },
+    //Move to controller
+    getSurface: function () {
+        return LINEFINDER.helpers.getCheckedBoxesValues(LINEFINDER.settings.surfaceCtrlName);
+    },
+    //Move to controller
+    getResort: function () {
+        return LINEFINDER.helpers.getSelectedOptions(LINEFINDER.settings.resortId);
+    },
+    //Move to controller
+    getFilterText: function () {
+        return document.getElementById(LINEFINDER.settings.filterTxtId).value;
+    },
+    //Move to controller
+    updateControls: function () {
+        LINEFINDER.helpers.setCheckBoxes(LINEFINDER.settings.difficultyCtrlName, this.difficulty);
+        LINEFINDER.helpers.setCheckBoxes(LINEFINDER.settings.surfaceCtrlName, this.surface);
+        LINEFINDER.helpers.setSelectedOptions(LINEFINDER.settings.resortId, this.resort);
+        document.getElementById(LINEFINDER.settings.filterTxtId).value = this.filterText;
+
+    }
+
+}
+
+
+//Getting Elements to add event listners to
+
+var elDifficultyLabels = document.getElementById(LINEFINDER.settings.difficultyGrpId).getElementsByTagName('label');
+var elSurfaceLabels = document.getElementById(LINEFINDER.settings.surfaceGrpId).getElementsByTagName('label');
+var elResortSelector = document.getElementById(LINEFINDER.settings.resortId);
+var elFilterText = document.getElementById(LINEFINDER.settings.filterTxtId)
+var elResetFilterBtn = document.getElementById(LINEFINDER.settings.resetBtnId);
+
+//Adding event listners to elements
+LINEFINDER.event.addListner(elResetFilterBtn, 'click', resetFilters);
+LINEFINDER.event.addListners(elDifficultyLabels, 'click', filterData);
+LINEFINDER.event.addListners(elSurfaceLabels, 'click', filterData);
+LINEFINDER.event.addListner(elResortSelector, 'click', filterData);
+//this will run if someone just clicks in the text field and press any key even if it doesnt result in data entry
+LINEFINDER.event.addListner(elFilterText, 'keyup', filterData);
+
 
 window.onload = function () {
-    formatResults(rundata.runs, "results");
+    // formatResults(rundata.runs, 'results');
+    LINEFINDER.Filters.load();
+    filterData();
 }
 
+function resetFilters() {
+    LINEFINDER.Filters.reset();
+    filterData();
 
+}
 
-function filterData(filters) {
-    var filterData = getFilterData();
+function filterData() {
+    LINEFINDER.Filters.getFilters();
     //apears that passing an object to the filter function does not evaluate correctly
     //will do some more research but for now going to apply consecutive filters.
-    //formatResults(rundata.runs.filter(filterByAll(filterData)), "results");
+    //formatResults(rundata.runs.filter(filterByAll(filterData)), 'results');
 
     var filteredRuns = rundata.runs
-        .filter(filterByDifficulty(filterData.difficutly))
-        .filter(filterByText(filterData.text))
-        .filter(filterBySurface(filterData.surface))
-        .filter(filterByResort(filterData.resort));
-    formatResults(filteredRuns, "results");
+        .filter(filterByDifficulty(LINEFINDER.Filters.difficulty))
+        .filter(filterByText(LINEFINDER.Filters.filterText.toLowerCase()))
+        .filter(filterBySurface(LINEFINDER.Filters.surface))
+        .filter(filterByResort(LINEFINDER.Filters.resort));
+    formatResults(filteredRuns, LINEFINDER.settings.resultsId);
 }
 
-function getFilterData() {
-    var filterData = {}
-    filterData.difficutly = getCheckedBoxesValues("difficulty[]");
-    filterData.surface = getCheckedBoxesValues("surface[]");
-    filterData.resort = getSelectedOptions("resort");
-    filterData.text = document.getElementById("filterText").value.toLowerCase();
-    return filterData;
-
-}
-
-
-//See if I can combine filters it's not working
-function filterByAll(filterObj) {
-    return function (element) {
-        return filterObj.difficulty.includes(element.difficulty) &&
-            (element.name.toLowerCase().includes(filterObj.text) || element.description.toLowerCase().includes(filterObj.text));
-    }
-}
-
+// Need to move filters into runs model object
 //Filters Runs by difficulty given an array of selected difficulties
 function filterByDifficulty(value) {
     return function (element) {
@@ -124,27 +174,3 @@ function filterByResort(value) {
 }
 
 
-
-// Return array of the checked checkbox values
-function getCheckedBoxesValues(objName) {
-    var checkBoxes = document.getElementsByName(objName);
-    var checkedCheckBoxes = [];
-    for(var i=0; i<checkBoxes.length; i++) {
-        if (checkBoxes[i].checked) {
-            checkedCheckBoxes.push(checkBoxes[i].value);
-        }
-    }
-    return checkedCheckBoxes;
-}
-
-// Return array of the checked checkbox values
-function getSelectedOptions(objId) {
-    var selectElement = document.getElementById(objId);
-    var selectedOptions = [];
-    for (var i = 0; i < selectElement.length; i++) {
-        if (selectElement[i].selected) {
-            selectedOptions.push(selectElement[i].value.toLowerCase());
-        }
-    }
-    return selectedOptions;
-}

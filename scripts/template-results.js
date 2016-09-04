@@ -9,16 +9,16 @@
 
 //takes a run object and returns the html needed to render the result
 function formatResult(run) {
-    var output = '  <div class="result"> \
-                        <div class="result-left"> \
-                            <a href="#"> \
-                                <img class="result-obj" src="' + run.image + '" alt="' + run.name + '"> \
-                            </a> \
-                        </div> \
-                        <div class="result-body"> \
-                            <h4 class="result-heading">' + run.name + '</h4>' + run.description + ' \
-                        </div> \
-                    </div>';
+    var output = '  <div class="result">' +
+                        '<div class="result-left">' +
+                            '<a href="#">' +
+                                '<img class="result-obj" src="' + run.image + '" alt="' + run.name + '">' +
+                            '</a> ' +
+                        '</div> ' +
+                        '<div class="result-body"> ' +
+                            '<h4 class="result-heading">' + run.name + '</h4>' + run.description + ' ' +
+                        '</div> ' +
+                    '</div>';
     return output;
 }
 

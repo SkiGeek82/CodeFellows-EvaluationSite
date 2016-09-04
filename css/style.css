@@ -14,7 +14,7 @@ body{
 header, footer{
     padding: 1em;
     color: white;
-    background-color:slategray;
+    background-color:#006699;
     clear: left;
     text-align: center;
 }
@@ -33,7 +33,7 @@ label{
     font-weight:bold;
 }
 
-.checkbox-group label{
+.checkbox-grp label{
     font-weight:normal;
     cursor:pointer;
 }
@@ -88,7 +88,7 @@ label{
     border-color: #2e6da4;
 }
 
-#filternav {
+#filter-nav {
     width: 25%;
     float: left;
     padding: 1em;
@@ -144,31 +144,30 @@ label{
 
 /* End Result Card Styles*/
 
-#diffSelector input[type=checkbox] {
+
+/* Styling for image toggle checkboxes*/
+#diff-grp input[type=checkbox] {
     display:none;
 }
 
-
-#diffSelector input[type=checkbox] + img {
+#diff-grp input[type=checkbox] + img {
     -webkit-filter: grayscale(100%) opacity(50%);
     filter:grayscale(100%) opacity(50%);
-
-
 }
 
-
-#diffSelector label{
+#diff-grp label{
     padding-left:3px;
     padding-right:3px;
 }
 
-#diffSelector label img{
+#diff-grp label img{
     width:25px;
 }
 
-#diffSelector input[type=checkbox]:checked + img
+#diff-grp input[type=checkbox]:checked + img
 {
     -webkit-filter: grayscale(0%);
     filter:grayscale(0%);
 
 }
+/* End Styling for image toggle checkboxes*/
