@@ -37,6 +37,60 @@ var rundata = {
             "difficulty": "doubleBlack",
             "surface": "powder",
             "image": "./images/runs/luckyshot.jpg"
+        },
+        {
+            "id": 5,
+            "resort": "Crystal Mountain",
+            "name": "Gold Hills",
+            "description": "Gold Hills is just to the left as you leave the lodge and you will find a number of the on mountain cabins just to lookers right of the run. Gold Hills is often host to the local racing team practice and event area.",
+            "difficulty": "blue",
+            "surface": "icy",
+            "image": "./images/runs/luckyshot.jpg"
+        },
+        {
+            "id": 6,
+            "resort": "Crystal Mountain",
+            "name": "Meadow",
+            "description": "The begginer slope allows for easy gliding for learning the basics",
+            "difficulty": "green",
+            "surface": "groomed",
+            "image": "./images/runs/luckyshot.jpg"
+        },
+        {
+            "id": 7,
+            "resort": "Crystal Mountain",
+            "name": "Rolling Knolls",
+            "description": "A steep blue and the only way to get from Forest Queens chair to Rainier Express without going to the bottom.",
+            "difficulty": "blue",
+            "surface": "icy",
+            "image": "./images/runs/luckyshot.jpg"
+        },
+        {
+            "id": 8,
+            "resort": "Crystal Mountain",
+            "name": "Gandy's Run",
+            "description": "A side run from luckyshot often has moguls on one side and groomed on the other.",
+            "difficulty": "blue",
+            "surface": "moguls",
+            "image": "./images/runs/luckyshot.jpg"
+        },
+        {
+            "id": 9,
+            "resort": "Crystal Mountain",
+            "name": "Pinball",
+            "description": "A narrow shoot not much wider than your skis.  One wrong tunr and you will understand why the run has its name",
+            "difficulty": "doubleBlack",
+            "surface": "icy",
+            "image": "./images/runs/luckyshot.jpg"
+        },
+        {
+            "id": 10,
+            "resort": "Stevens Pass",
+            "name": "Daisy",
+            "description": "The begginer slope allows for easy gliding for learning the basics",
+            "difficulty": "green",
+            "surface": "groomed",
+            "image": "./images/runs/luckyshot.jpg"
         }
     ]
 };

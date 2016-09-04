@@ -1,118 +1,122 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Line Finder</title>
-		<link rel="stylesheet" href="./css/style.css" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
-	</head>
-<body>
-	<header>
-		<h1>Line Finder</h1>
-	</header>
-    <!-- On Mobile make it so that this filter colapses -->
-    <nav id="filter-nav">
-        <form name="filter">
-            <fieldset>
-                <label for="difficulty">Run Difficulty:</label>
-                <div id="diff-grp" class="checkbox-grp">
-                    <label classs="checkbox-grp-label">
-                        <input type="checkbox" name="difficulty[]" value="green" />
-                        <img src="./images/green.svg" alt="Green Cirle" />
-                    </label>
-                    <label>
-                        <input type="checkbox" name="difficulty[]" value="blue" />
-                        <img src="./images/blue.svg" alt="Blue Square" />
-                    </label>
-                    <label>
-                        <input type="checkbox" name="difficulty[]" value="black" />
-                        <img src="./images/black.svg" alt="Black Diamond" />
-                    </label>
-                    <label>
-                        <input type="checkbox" name="difficulty[]" value="doubleBlack" />
-                        <img src="./images/doubleBlack.svg" alt="Double Black Diamond" />
-                    </label>
-                    <label>
-                        <input type="checkbox" name="difficulty[]" value="terrainPark" />
-                        <img src="./images/terrainPark.svg" alt="Terrain Park" />
-                    </label>
-                </div>
-            </fieldset>
-            <fieldset>
-                <div>
-                    <label for="resort">Select Resorts:</label>
-                    <div>
-                        <select multiple name="resort" id="resort" class="form-control" style="height:auto;">
-                            <option>Crystal Mountain</option>
-                            <option>Snoqualmie Pass</option>
-                            <option>Stevens Pass</option>
-                            <option>Mt. Baker</option>
-                        </select>
-                    </div>
-                </div>
-            </fieldset>
-            <fieldset>
-                <label for="surface">Surface Conditions:</label>
-                <div id="surface-grp" class="checkbox-grp">
-                    <div>
-                        <label>
-                            <input type="checkbox" name="surface[]" value="groomed" />Groomed
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="surface[]" value="moguls" />Moguls
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="surface[]" value="powder" />Powder
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="surface[]" value="icy" />Icy
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
-            <fieldset>
-                <label for="filter-txt">Filter Text:</label>
-                <div>
-                    <input id="filter-txt" class="form-control" type="text" name="filterText" placeholder="Filter Text" />
-                </div>
-            </fieldset>
-            <div style="text-align:right">
-                <input class="btn btn-default" id="reset-btn" type="button" value="Reset Filters" />
-            </div>
-        </form>
-    </nav>
-	<main>
-		<section id="results">
-            <!--This was replaced by a javascript template-->
-			<!--<div class="result">
-				<div class="result-left">
-					<a href="#">
-						<img class="result-obj" src="..." alt="...">
-					</a>
-				</div>
-				<div class="result-body">
-					<h4 class="result-heading">Some Run 1</h4>
-					The sprawling expanse of the ski terrain flows over half a dozen peaks and basins and lends itself to seemingly limitless variations. 
-					Experience breathtaking views of Mt. Rainier and the Cascade range from the top of the Mt. Rainier Gondola and Summit House restaurant; 
-					a place you can enjoy fresh Northwest cuisine and relax and reflect in the majesty of the towering peaks and sweeping views.
+<head>
+    <title>Line Finder</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-				</div>
-			</div>-->		
-		</section>
-	</main>
-	<footer>
-		<div>Justin Dietz</div>
-	</footer>
-    
+</head>
+<body>
+    <header>
+        <h1>Line Finder</h1>
+        <h5>Find the Ski or Snowboard run that matches what you are looking for</h5>
+    </header>
+    <!-- On Mobile make it so that this filter colapses -->
+    <div class="wrapper">
+        <nav id="filter-nav">
+
+            <form name="filter">
+                <fieldset>
+                    <label for="difficulty">Run Difficulty:</label>
+                    <div id="diff-grp" class="checkbox-grp">
+                        <label classs="checkbox-grp-label">
+                            <input type="checkbox" name="difficulty[]" value="green" />
+                            <img src="./images/green.svg" alt="Green Cirle" />
+                        </label>
+                        <label>
+                            <input type="checkbox" name="difficulty[]" value="blue" />
+                            <img src="./images/blue.svg" alt="Blue Square" />
+                        </label>
+                        <label>
+                            <input type="checkbox" name="difficulty[]" value="black" />
+                            <img src="./images/black.svg" alt="Black Diamond" />
+                        </label>
+                        <label>
+                            <input type="checkbox" name="difficulty[]" value="doubleBlack" />
+                            <img src="./images/doubleBlack.svg" alt="Double Black Diamond" />
+                        </label>
+                        <label>
+                            <input type="checkbox" name="difficulty[]" value="terrainPark" />
+                            <img src="./images/terrainPark.svg" alt="Terrain Park" />
+                        </label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        <label for="resort">Select Resorts: <small>hold ctrl for multiple</small></label>
+                        <div>
+                            <select multiple name="resort" id="resort" class="form-control" style="height:auto;">
+                                <option>Crystal Mountain</option>
+                                <option>Snoqualmie Pass</option>
+                                <option>Stevens Pass</option>
+                                <option>Mt. Baker</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <label for="surface">Surface Conditions:</label>
+                    <div id="surface-grp" class="checkbox-grp">
+                        <div>
+                            <label>
+                                <input type="checkbox" name="surface[]" value="groomed" />Groomed
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" name="surface[]" value="moguls" />Moguls
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" name="surface[]" value="powder" />Powder
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" name="surface[]" value="icy" />Icy
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <label for="filter-txt">Filter Text:</label>
+                    <div>
+                        <input id="filter-txt" class="form-control" type="text" name="filterText" placeholder="Filter Text" />
+                    </div>
+                </fieldset>
+                <div style="text-align:right">
+                    <input class="btn btn-default" id="reset-btn" type="button" value="Reset Filters" />
+                </div>
+            </form>
+        </nav>
+        <main>
+            <section id="results">
+                <!--This was replaced by a javascript template-->
+                <!--<div class="result">
+                    <div class="result-left">
+                        <a href="#">
+                            <img class="result-obj" src="..." alt="...">
+                        </a>
+                    </div>
+                    <div class="result-body">
+                        <h4 class="result-heading">Some Run 1</h4>
+                        The sprawling expanse of the ski terrain flows over half a dozen peaks and basins and lends itself to seemingly limitless variations.
+                        Experience breathtaking views of Mt. Rainier and the Cascade range from the top of the Mt. Rainier Gondola and Summit House restaurant;
+                        a place you can enjoy fresh Northwest cuisine and relax and reflect in the majesty of the towering peaks and sweeping views.
+
+                    </div>
+                </div>-->
+            </section>
+        </main>
+    </div>
+    <footer>
+        <div>Justin Dietz</div>
+    </footer>
+
     <script type="text/javascript" src="./scripts/data.js"></script>
     <script type="text/javascript" src="./scripts/template-results.js"></script>
-  
+
 
     <script type="text/javascript" src="./scripts/LINEFINDER.event.js"></script>
     <script type="text/javascript" src="./scripts/LINEFINDER.helpers.js"></script>
