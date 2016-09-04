@@ -16,8 +16,13 @@ function formatResult(run) {
                             '</a> ' +
                         '</div> ' +
                         '<div class="result-body"> ' +
-                            '<h4 class="result-heading">' + run.name + '</h4>' + run.description + ' ' +
+                            
+                            '<h4 class="result-heading">' + run.name + '</h4>' +
+                            '<h6 class="result-subheading">' + run.resort + '</h6>' + run.description + ' ' +
                         '</div> ' +
+                        '<div class="result-menu">' + 
+                            '<div class="diff-rating"><img  src="./images/' + run.difficulty + '.svg" /></div>' +
+                        '</div>' +
                     '</div>';
     return output;
 }

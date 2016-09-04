@@ -101,6 +101,7 @@ LINEFINDER.Filters = {
 }
 
 
+
 //Getting Elements to add event listners to
 
 var elDifficultyLabels = document.getElementById(LINEFINDER.settings.difficultyGrpId).getElementsByTagName('label');
@@ -124,6 +125,8 @@ window.onload = function () {
     filterData();
 }
 
+
+
 function resetFilters() {
     LINEFINDER.Filters.reset();
     filterData();
@@ -141,7 +144,7 @@ function filterData() {
         .filter(filterByText(LINEFINDER.Filters.filterText.toLowerCase()))
         .filter(filterBySurface(LINEFINDER.Filters.surface))
         .filter(filterByResort(LINEFINDER.Filters.resort));
-    formatResults(filteredRuns, LINEFINDER.settings.resultsId);
+    formatResults(filteredRuns.sort(compare), LINEFINDER.settings.resultsId);
 }
 
 // Need to move filters into runs model object
@@ -173,4 +176,11 @@ function filterByResort(value) {
     }
 }
 
+function compare(a, b) {
+    if (a.name < b.name)
+        return -1;
+    if (a.name > b.name)
+        return 1;
+    return 0;
+}
 

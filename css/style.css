@@ -38,6 +38,11 @@ label{
     cursor:pointer;
 }
 
+.wrapper{
+    overflow:auto;
+    padding-bottom:60px;
+}
+
 .btn{
     display: inline-block;
     padding: 6px 12px;
@@ -103,6 +108,8 @@ label{
 
 .result{
     margin-top:15px;
+    padding-bottom:5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.19);
 }
 
 .result:first-child{
@@ -114,7 +121,7 @@ label{
 }
 
 .result-body {
-  /*width: 10000px;*/
+  width: 100%;
 }
 
 .result-obj{
@@ -140,10 +147,29 @@ label{
 .result-heading {
   margin-top: 0;
   margin-bottom: 5px;
+ 
 }
 
-/* End Result Card Styles*/
+.result-subheading {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
 
+.result-menu {
+  display:table-cell;
+  width: 125px;
+  
+}
+
+
+/* End Result Card Styles*/
+.result-menu .diff-rating{
+    text-align:center;
+}
+
+.diff-rating img{
+    width:25px;
+}
 
 /* Styling for image toggle checkboxes*/
 #diff-grp input[type=checkbox] {
