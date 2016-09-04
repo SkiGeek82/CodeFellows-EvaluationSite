@@ -11,12 +11,12 @@
 		<h1>Line Finder</h1>
 	</header>
     <!-- On Mobile make it so that this filter colapses -->
-    <nav id="filternav">
+    <nav id="filter-nav">
         <form name="filter">
             <fieldset>
                 <label for="difficulty">Run Difficulty:</label>
-                <div id="diffSelector" class="checkbox-group">
-                    <label classs="checkbox-group-label">
+                <div id="diff-grp" class="checkbox-grp">
+                    <label classs="checkbox-grp-label">
                         <input type="checkbox" name="difficulty[]" value="green" />
                         <img src="./images/green.svg" alt="Green Cirle" />
                     </label>
@@ -53,7 +53,7 @@
             </fieldset>
             <fieldset>
                 <label for="surface">Surface Conditions:</label>
-                <div id="surfaceGroup" class="checkbox-group">
+                <div id="surface-grp" class="checkbox-grp">
                     <div>
                         <label>
                             <input type="checkbox" name="surface[]" value="groomed" />Groomed
@@ -77,13 +77,13 @@
                 </div>
             </fieldset>
             <fieldset>
-                <label for="filterText">Filter Text:</label>
+                <label for="filter-txt">Filter Text:</label>
                 <div>
-                    <input id="filterText" class="form-control" type="text" name="filterText" placeholder="Filter Text" />
+                    <input id="filter-txt" class="form-control" type="text" name="filterText" placeholder="Filter Text" />
                 </div>
             </fieldset>
             <div style="text-align:right">
-                <input class="btn btn-default" id="resetfilter" type="button" value="Reset Filters" />
+                <input class="btn btn-default" id="reset-btn" type="button" value="Reset Filters" />
             </div>
         </form>
     </nav>
@@ -113,9 +113,9 @@
     <script type="text/javascript" src="./scripts/data.js"></script>
     <script type="text/javascript" src="./scripts/template-results.js"></script>
   
-    <script type="text/javascript" src="./scripts/app.js"></script>
+
     <script type="text/javascript" src="./scripts/LINEFINDER.event.js"></script>
     <script type="text/javascript" src="./scripts/LINEFINDER.helpers.js"></script>
-    
+    <script type="text/javascript" src="./scripts/app.js"></script>
 </body>
 </html>

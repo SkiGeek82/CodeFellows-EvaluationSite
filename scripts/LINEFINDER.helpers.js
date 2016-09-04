@@ -1,5 +1,8 @@
 'use strict';
 
+var LINEFINDER = LINEFINDER || {};
+
+LINEFINDER.helpers = LINEFINDER.helpers || {};
 
 
 LINEFINDER.helpers.getCheckedBoxesValues = function (objName) {

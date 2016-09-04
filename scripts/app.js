@@ -1,46 +1,26 @@
 'use strict';
 //Sticking to ECMAScript 5 based on feedback from CodeFellows Admin
 
-//Creating "Namespace" 
+//Creating 'Namespace' 
 var LINEFINDER = LINEFINDER || {};
-LINEFINDER.models = LINEFINDER.models || {};
-LINEFINDER.views = LINEFINDER.views || {};
+//LINEFINDER.models = LINEFINDER.models || {};
+//LINEFINDER.views = LINEFINDER.views || {};
 LINEFINDER.helpers = LINEFINDER.helpers || {};
 LINEFINDER.event = LINEFINDER.event || {};
+LINEFINDER.settings = LINEFINDER.settings || {};
 
-LINEFINDER.event = {
-    // Parameters:
-    // el - element object to add listner to
-    // type - the event type as a string to add ie: "click"
-    // fn - the function reference to call when event is raised
-    addListner: function (el, type, fn) {
-        el.addEventListener(type, fn);
-    },
 
-    //add the same event listner to an array of elments
-    addListners: function (el, type, fn) {
-        for (var i = 0; i < el.length; i++) {
-            el[i].addEventListener(type, fn);
-        }
-    },
-
-    removeListner: function (el, type, fn) {
-        el.removeEventListener(type, fn);
-    },
-
-    removeListners: function (el, type, fn) {
-        for (i = 0; i < x.length; i++) {
-            el[i].removeEventListener(type, fn);
-        }
-    }
+LINEFINDER.settings = {
+    filterLocalStorage: 'Filters',
+    difficultyGrpId: 'diff-grp',
+    difficultyCtrlName: 'difficulty[]',
+    surfaceGrpId: 'surface-grp',
+    surfaceCtrlName: 'surface[]',
+    resortId: 'resort',
+    filterTxtId: 'filter-txt',
+    resetBtnId: 'reset-btn',
+    resultsId: 'results'
 };
-
-
-LINEFINDER.commonMethod = {
-    FilterLocalStorage: "Filters"
-}
-
-
 
 
 
@@ -50,7 +30,7 @@ LINEFINDER.Filters = {
     difficulty: [],
     resort: [],
     surface: [],
-    filterText: "",
+    filterText: '',
     getFilters: function () {
         this.difficulty = this.getDifficulty();
         this.surface = this.getSurface();
@@ -61,17 +41,17 @@ LINEFINDER.Filters = {
     },
     save: function () {
         //implement localstorage saving
-        localStorage.setItem(LINEFINDER.commonMethod.FilterLocalStorage, JSON.stringify(this));
+        localStorage.setItem(LINEFINDER.settings.filterLocalStorage, JSON.stringify(this));
     },
     load: function () {
         //implement localstorage retrieval
-        var tmpFilters = JSON.parse(localStorage.getItem(LINEFINDER.commonMethod.FilterLocalStorage));
+        var tmpFilters = JSON.parse(localStorage.getItem(LINEFINDER.settings.filterLocalStorage));
 
         if (tmpFilters == null) {
             this.difficulty = [];
             this.resort = [];
             this.surface = [];
-            this.filterText = "";
+            this.filterText = '';
         }
         else {
             this.difficulty = tmpFilters.difficulty;
@@ -81,34 +61,40 @@ LINEFINDER.Filters = {
         }
 
         //Update UI
+        //Change to Notify Controler
         this.updateControls();
     },
+    //Move to model
     reset: function () {
         //delete from local storage
-        localStorage.removeItem(LINEFINDER.commonMethod.FilterLocalStorage);
+        localStorage.removeItem(LINEFINDER.settings.filterLocalStorage);
         //delete in memory
         this.load();
 
     },
 
-    //need to convert from literal so I can make these private/privlaged
+    //Move to controller
     getDifficulty: function () {
-        return LINEFINDER.helpers.getCheckedBoxesValues("difficulty[]");
+        return LINEFINDER.helpers.getCheckedBoxesValues(LINEFINDER.settings.difficultyCtrlName);
     },
+    //Move to controller
     getSurface: function () {
-        return LINEFINDER.helpers.getCheckedBoxesValues("surface[]");
+        return LINEFINDER.helpers.getCheckedBoxesValues(LINEFINDER.settings.surfaceCtrlName);
     },
+    //Move to controller
     getResort: function () {
-        return LINEFINDER.helpers.getSelectedOptions("resort");
+        return LINEFINDER.helpers.getSelectedOptions(LINEFINDER.settings.resortId);
     },
+    //Move to controller
     getFilterText: function () {
-        return document.getElementById("filterText").value;
+        return document.getElementById(LINEFINDER.settings.filterTxtId).value;
     },
+    //Move to controller
     updateControls: function () {
-        LINEFINDER.helpers.setCheckBoxes("difficulty[]", this.difficulty);
-        LINEFINDER.helpers.setCheckBoxes("surface[]", this.surface);
-        LINEFINDER.helpers.setSelectedOptions("resort", this.resort);
-        document.getElementById("filterText").value = this.filterText;
+        LINEFINDER.helpers.setCheckBoxes(LINEFINDER.settings.difficultyCtrlName, this.difficulty);
+        LINEFINDER.helpers.setCheckBoxes(LINEFINDER.settings.surfaceCtrlName, this.surface);
+        LINEFINDER.helpers.setSelectedOptions(LINEFINDER.settings.resortId, this.resort);
+        document.getElementById(LINEFINDER.settings.filterTxtId).value = this.filterText;
 
     }
 
@@ -116,24 +102,24 @@ LINEFINDER.Filters = {
 
 
 //Getting Elements to add event listners to
-var btnResetFilter = document.getElementById("resetfilter");
-var difficultyLabels = document.getElementById("diffSelector").getElementsByTagName("label");
-var surfaceLabels = document.getElementById("surfaceGroup").getElementsByTagName("label");
-var resortSelector = document.getElementById("resort");
-var filterText = document.getElementById("filterText")
 
+var elDifficultyLabels = document.getElementById(LINEFINDER.settings.difficultyGrpId).getElementsByTagName('label');
+var elSurfaceLabels = document.getElementById(LINEFINDER.settings.surfaceGrpId).getElementsByTagName('label');
+var elResortSelector = document.getElementById(LINEFINDER.settings.resortId);
+var elFilterText = document.getElementById(LINEFINDER.settings.filterTxtId)
+var elResetFilterBtn = document.getElementById(LINEFINDER.settings.resetBtnId);
 
 //Adding event listners to elements
-LINEFINDER.event.addListner(btnResetFilter, "click", resetFilters);
-LINEFINDER.event.addListners(difficultyLabels, "click", filterData);
-LINEFINDER.event.addListners(surfaceLabels, "click", filterData);
-LINEFINDER.event.addListner(resortSelector, "click", filterData);
+LINEFINDER.event.addListner(elResetFilterBtn, 'click', resetFilters);
+LINEFINDER.event.addListners(elDifficultyLabels, 'click', filterData);
+LINEFINDER.event.addListners(elSurfaceLabels, 'click', filterData);
+LINEFINDER.event.addListner(elResortSelector, 'click', filterData);
 //this will run if someone just clicks in the text field and press any key even if it doesnt result in data entry
-LINEFINDER.event.addListner(filterText, "keyup", filterData);
+LINEFINDER.event.addListner(elFilterText, 'keyup', filterData);
 
 
 window.onload = function () {
-    // formatResults(rundata.runs, "results");
+    // formatResults(rundata.runs, 'results');
     LINEFINDER.Filters.load();
     filterData();
 }
@@ -148,14 +134,14 @@ function filterData() {
     LINEFINDER.Filters.getFilters();
     //apears that passing an object to the filter function does not evaluate correctly
     //will do some more research but for now going to apply consecutive filters.
-    //formatResults(rundata.runs.filter(filterByAll(filterData)), "results");
+    //formatResults(rundata.runs.filter(filterByAll(filterData)), 'results');
 
     var filteredRuns = rundata.runs
         .filter(filterByDifficulty(LINEFINDER.Filters.difficulty))
         .filter(filterByText(LINEFINDER.Filters.filterText.toLowerCase()))
         .filter(filterBySurface(LINEFINDER.Filters.surface))
         .filter(filterByResort(LINEFINDER.Filters.resort));
-    formatResults(filteredRuns, "results");
+    formatResults(filteredRuns, LINEFINDER.settings.resultsId);
 }
 
 // Need to move filters into runs model object
@@ -188,44 +174,3 @@ function filterByResort(value) {
 }
 
 
-// In the MDN guide these would move to the CommonMethod section
-// Return array of the checked checkbox values
-//function getCheckedBoxesValues(objName) {
-//    var checkBoxes = document.getElementsByName(objName);
-//    var checkedCheckBoxes = [];
-//    for(var i=0; i<checkBoxes.length; i++) {
-//        if (checkBoxes[i].checked) {
-//            checkedCheckBoxes.push(checkBoxes[i].value);
-//        }
-//    }
-//    return checkedCheckBoxes;
-//}
-
-//function setCheckBoxes(objName, objValues) {
-//    var checkBoxes = document.getElementsByName(objName);
-//    for (var i = 0; i < checkBoxes.length; i++) {
-//        checkBoxes[i].checked = objValues.includes(checkBoxes[i].value)
-//    }
-//}
-
-// Return array of the checked checkbox values
-//function getSelectedOptions(objId) {
-//    var selectElement = document.getElementById(objId);
-//    var selectedOptions = [];
-//    for (var i = 0; i < selectElement.length; i++) {
-//        if (selectElement[i].selected) {
-//            selectedOptions.push(selectElement[i].value.toLowerCase());
-//        }
-//    }
-//    return selectedOptions;
-//}
-
-//function setSelectedOptions(objId, objValues) {
-//    var selectElement = document.getElementById(objId);
-
-//    for (var i = 0; i < selectElement.length; i++) {
-//        selectElement[i].selected = objValues.includes(selectElement[i].value.toLowerCase())
-//    }
-    
-
-//}
