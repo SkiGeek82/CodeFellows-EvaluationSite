@@ -1,0 +1,18 @@
+{
+    "scripts": {
+        "lint": "eslint ."
+    },
+    "devDependencies": {
+        "eslint": "^2.7.0",
+        "eslint-config-google": "^0.5.0"
+    },
+    "eslintConfig": {
+        "extends": "google",
+        "rules": {
+           "linebreak-style": [
+            "error",
+            "windows"
+            ]
+        }
+    }
+}
