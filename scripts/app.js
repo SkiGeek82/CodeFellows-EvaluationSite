@@ -21,7 +21,7 @@ LINEFINDER.settings = {
   resultsId: 'results'
 };
 
-// using object literals because there is not a need for more than one instance of the filter object
+
 LINEFINDER.Filters = {
   difficulty: [],
   resort: [],
@@ -146,7 +146,6 @@ function filterBySurface(value) {
     return value.includes(element.surface) || value.length === 0;
   };
 }
-
 
 // find all runs where name or description includes a specified value
 function filterByText(value) {
