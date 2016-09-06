@@ -5,12 +5,14 @@ Provides a list of Ski/Snowboard runs and allows the user to filter them based o
 * Filter by difficulty (multiselect will perform OR)
 * Filter by surface
 * Filter by restort
-* Filter by average pitch
-* Filter by average review 1-5 (stars)
+* Filter by text
+* ~~Filter by average pitch~~
+* ~~Filter by average review 1-5 (stars)~~
+* ~~Filter by vertical feet~~
+* ~~Filter by elevation~~
+* ~~Add reviews~~
 * Clear Filter Settings 
-* On refresh filter settings are save and only results matching filter are displayed
-
-
+* On refresh filter settings are saved and only results matching filter are displayed
 
 ## Git Work Process
 There is a specific work process we follow when making changes to code. This process helps ensure that changes are made in a specific way and are tracked to allow for build and deploy to be seamless, the following is a summary of the work process
