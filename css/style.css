@@ -98,7 +98,8 @@ label{
 #filter-nav {
     width: 25%;
     float: left;
-    padding: 1em;
+    padding: 1em .5em 1em 1em;
+    min-width: 220px; 
 }
 #results {
     width: 75%;
