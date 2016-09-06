@@ -41,7 +41,7 @@ var lines = new LINEFINDER.models.Runs();
 LINEFINDER.Filters.load();
 
 // get json file and once async is done load the data and render the page
-getJson('/data/runs.json', function(text) {
+getJson(location.pathname + 'data/runs.json', function(text) {
   lines.runs = JSON.parse(text);
   filterData();
 });
