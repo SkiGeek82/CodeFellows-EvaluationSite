@@ -36,22 +36,48 @@ LINEFINDER.event.addListner(elResortSelector, 'click', filterData);
 // this will run if someone just clicks in the text field and press any key even if it doesnt result in data entry
 LINEFINDER.event.addListner(elFilterText, 'keyup', filterData);
 
+
 var lines = new LINEFINDER.models.Runs();
-lines.runs = rundata.runs;
+LINEFINDER.Filters.load();
 
-window.onload = function() {
-  // formatResults(rundata.runs, 'results');
-  LINEFINDER.Filters.load();
+// get json file and once async is done load the data and render the page
+getJson('/data/runs.json', function(text) {
+  lines.runs = JSON.parse(text);
   filterData();
-};
+});
 
+/**
+ * resets the fitlers back to default and renders the results
+ */
 function resetFilters() {
   LINEFINDER.Filters.reset();
   filterData();
 }
 
+/**
+ * get's the fitlers from the page and renders the filtered data
+ */
 function filterData() {
   LINEFINDER.Filters.getFilters();
-
-  formatResults(lines.filter(LINEFINDER.Filters).sort().runs, LINEFINDER.settings.resultsId);
+  formatResults(lines.query(LINEFINDER.Filters).sort().runs, LINEFINDER.settings.resultsId);
 }
+
+
+/**
+ * Gets a json file from the server and after complete calls the callback
+ * @param {any} file - path to the file to open
+ * @param {any} callback - function to run after complete
+ */
+function getJson(file, callback) {
+  var jsonFile = new XMLHttpRequest();
+  jsonFile.overrideMimeType('application/json');
+  jsonFile.open('GET', file, true);
+  jsonFile.onreadystatechange = function() {
+    if (jsonFile.readyState === 4 && jsonFile.status == '200') {
+      callback(jsonFile.responseText);
+    }
+  };
+  jsonFile.send(null);
+}
+
+

@@ -3,12 +3,13 @@
 
 // Creating 'Namespace'
 var LINEFINDER = LINEFINDER || {};
-LINEFINDER.models = LINEFINDER.models || {};
-// LINEFINDER.views = LINEFINDER.views || {};
 LINEFINDER.helpers = LINEFINDER.helpers || {};
-LINEFINDER.event = LINEFINDER.event || {};
 LINEFINDER.settings = LINEFINDER.settings || {};
 
+/**
+ * LINEFINDER.Filters class provides the functionality to get, set and store the
+ * filter settings and display on the UI.
+ */
 LINEFINDER.Filters = {
   difficulty: [],
   resort: [],

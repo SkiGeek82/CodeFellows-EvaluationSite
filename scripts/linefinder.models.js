@@ -24,8 +24,15 @@ LINEFINDER.models.Run = function(id, resort, name, description, difficulty, surf
   this.image = image;
 };
 
+/**
+ * Runs class holds an array of Run objects and provides the functionallity to
+ * filter and sort that data
+ * @param {LINEFINDER.models.Run[]} objArray - an array of LINEFINDER.models.Run
+ */
 LINEFINDER.models.Runs = function(objArray) {
   this.runs = objArray || [];
+
+  // Filter Functions
   this.byDiff = function(value) {
     return function(element) {
       return value.includes(element.difficulty) || value.length === 0;
@@ -46,6 +53,8 @@ LINEFINDER.models.Runs = function(objArray) {
       return value.includes(element.resort.toLowerCase()) || value.length === 0;
     };
   };
+
+  // Sort Functions
   this.byName = function(a, b) {
     if (a.name < b.name)
       return -1;
@@ -55,31 +64,32 @@ LINEFINDER.models.Runs = function(objArray) {
   };
 };
 
+/**
+ * Adds a Run object to the Runs.runs array
+ * @param {LINEFINDER.models.Run} runObj - Run object to be added
+ */
 LINEFINDER.models.Runs.prototype.push = function(runObj) {
   this.runs.push(runObj);
 };
 
-LINEFINDER.models.Runs.prototype.filterByDifficulty = function(value) {
-  return this.runs.filter(this.byDiff(value));
-};
-
-LINEFINDER.models.Runs.prototype.filterBySurface = function(value) {
-  return this.runs.filter(this.bySurface(value));
-};
-
-LINEFINDER.models.Runs.prototype.filterByText = function(value) {
-  return this.runs.filter(this.byText(value));
-};
-
-LINEFINDER.models.Runs.prototype.filterByResort = function(value) {
-  return this.runs.filter(this.byResort(value));
-};
-
-LINEFINDER.models.Runs.prototype.filter = function(filter) {
-  return new LINEFINDER.models.Runs(this.runs.filter(this.byDiff(filter.difficulty))
+/**
+ * query returns a Runs object containing only the Runs that match the filter
+ * criteria
+ * @param {any} filter - either a LINEFINDER.Filter object or a filter function
+ * @return {LINEFINDER.models.Runs} - a copy of the filtered data
+ */
+LINEFINDER.models.Runs.prototype.query = function(filter) {
+  var filteredRuns = new LINEFINDER.models.Runs();
+  if (LINEFINDER.helpers.isFunction(filter)) {
+    filteredRuns.runs = this.runs.filter(filter);
+  }
+  else {
+    filteredRuns.runs = this.runs.filter(this.byDiff(filter.difficulty))
       .filter(this.byText(filter.filterText.toLowerCase()))
       .filter(this.bySurface(filter.surface))
-      .filter(this.byResort(filter.resort)));
+      .filter(this.byResort(filter.resort));
+  }
+  return filteredRuns;
 };
 
 LINEFINDER.models.Runs.prototype.sort = function() {

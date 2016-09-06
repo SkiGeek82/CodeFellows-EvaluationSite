@@ -39,3 +39,8 @@ LINEFINDER.helpers.setSelectedOptions = function(objId, objValues) {
     selectElement[i].selected = objValues.includes(selectElement[i].value.toLowerCase());
   }
 };
+
+LINEFINDER.helpers.isFunction = function(functionToCheck) {
+  var getType = {};
+  return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
+};
